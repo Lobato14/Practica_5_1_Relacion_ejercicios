@@ -45,14 +45,34 @@ package Ejercicio_5_5
     de la biblioteca.
  */
 
-
-fun puedeTomarPrestado(usuario: Usuario, libro: Libro): String {
+/**
+ * Función que verifica si un usuario puede tomar prestado un item de la biblioteca.
+ * @param usuario El usuario que intenta tomar prestado el item.
+ * @param item El item de la biblioteca que se quiere tomar prestado.
+ * @return Un mensaje indicando si el usuario puede o no tomar prestado el item.
+ */
+fun puedeTomarPrestado(usuario: Usuario, item: Any): String {
     return when (usuario) {
-        is Usuario.Visitante -> "Los visitantes no pueden tomar prestados libros."
-        is Usuario.Estudiante -> "El estudiante ${usuario.nombre} puede tomar prestado" +
-                " el libro '${libro.titulo}'."
-        is Usuario.Profesor -> "El profesor ${usuario.nombre} puede tomar prestado el " +
-                "libro '${libro.titulo}' por más tiempo."
+        is Usuario.Visitante -> "Los visitantes no pueden tomar prestados items de la " +
+                "biblioteca."
+        is Usuario.Estudiante -> when (item) {
+            is Libro -> "El estudiante ${usuario.nombre} puede tomar prestado el libro" +
+                    " '${item.titulo}'."
+            is Revista -> "El estudiante ${usuario.nombre} puede tomar prestada " +
+                    "la revista '${item.titulo}'."
+            is DVD -> "El estudiante ${usuario.nombre} puede tomar prestado el " +
+                    "DVD '${item.titulo}'."
+            else -> "Tipo de item no válido para estudiantes."
+        }
+        is Usuario.Profesor -> when (item) {
+            is Libro -> "El profesor ${usuario.nombre} puede tomar prestado " +
+                    "el libro '${item.titulo}' por más tiempo."
+            is Revista -> "El profesor ${usuario.nombre} puede tomar prestada la revista" +
+                    " '${item.titulo}' por más tiempo."
+            is DVD -> "El profesor ${usuario.nombre} puede tomar prestado el DVD" +
+                    " '${item.titulo}' por más tiempo."
+            else -> "Tipo de item no válido para profesores."
+        }
     }
 }
 
@@ -64,8 +84,19 @@ fun main() {
     val libro = Libro("La Sombra del Viento", "Carlos Ruiz Zafón",
         2001)
 
+    val revista = Revista("National Geographic", 123, 2022)
+    val dvd = DVD("El Señor de los Anillos", "Peter Jackson", 2001)
+
     println(puedeTomarPrestado(estudiante, libro))
     println(puedeTomarPrestado(profesor, libro))
     println(puedeTomarPrestado(visitante, libro))
+    println("--------------------------------------")
+    println(puedeTomarPrestado(estudiante, revista))
+    println(puedeTomarPrestado(profesor, revista))
+    println(puedeTomarPrestado(visitante, revista))
+    println("--------------------------------------")
+    println(puedeTomarPrestado(estudiante, dvd))
+    println(puedeTomarPrestado(profesor, dvd))
+    println(puedeTomarPrestado(visitante, dvd))
 }
 
