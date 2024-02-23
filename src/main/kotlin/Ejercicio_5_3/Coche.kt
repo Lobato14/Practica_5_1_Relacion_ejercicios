@@ -1,7 +1,11 @@
 package Ejercicio_5_3
 
+/**
+ * Clase que representa un coche.
+ */
 class Coche : Vehiculo {
-    override var motorEncendido = false
+
+    override var motorEncendido = true
     override var kmHora = 0
 
     override fun acelerar(velocidad: Int) {

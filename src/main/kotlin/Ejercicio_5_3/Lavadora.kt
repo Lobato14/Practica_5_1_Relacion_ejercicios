@@ -1,5 +1,8 @@
 package Ejercicio_5_3
 
+/**
+ * Clase que representa una lavadora.
+ */
 class Lavadora : EncendidoApagado, DispositivoElectronico {
     var encendida = false
 

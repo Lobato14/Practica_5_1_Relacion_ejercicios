@@ -1,5 +1,8 @@
 package Ejercicio_5_3
 
+/**
+ * Clase que representa un teléfono.
+ */
 class Telefono : EncendidoApagado, DispositivoElectronico {
     var encendido = false
 

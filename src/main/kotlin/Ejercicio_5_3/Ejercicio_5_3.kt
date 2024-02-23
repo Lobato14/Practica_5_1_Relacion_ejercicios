@@ -26,14 +26,16 @@ fun main() {
     telefono.encender()
     telefono.reiniciar()
     telefono.apagar()
+    println()
 
     val lavadora = Lavadora()
     lavadora.encender()
     lavadora.reiniciar()
     lavadora.apagar()
+    println()
 
     val coche = Coche()
-    coche.acelerar(50)
+    coche.acelerar(250)
     coche.motorEncendido = true
     coche.acelerar(50)
     coche.frenar(30)
