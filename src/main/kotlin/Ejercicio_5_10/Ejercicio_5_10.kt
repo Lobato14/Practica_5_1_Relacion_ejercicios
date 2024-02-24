@@ -70,14 +70,14 @@ fun main() {
     println()
 
     // Creamos a un empleado
-    val empleado = Empleado("Ana", 25, 30000.0)
+    val empleado = Empleado("Ana", 25, 30000.00)
     println("Información del Empleado:")
     println(empleado)
     println(empleado.trabajar())
     println()
 
     // Creamos a un gerente
-    val gerente = Gerente("Pedro", 40, 50000.0, 10000.0)
+    val gerente = Gerente("Pedro", 40, 50000.0, 10000.00)
     println("Información del Gerente:")
     println(gerente)
     println(gerente.administrar())
